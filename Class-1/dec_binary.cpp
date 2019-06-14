@@ -41,7 +41,7 @@ int main()
     cout<<convDecToBin(n)<<endl;
     cout<<"Binary : "<<endl;
     cin>>m;
-    cout<<convBinToDec(n);
+    cout<<convBinToDec(m);
 
     return 0;
 }
