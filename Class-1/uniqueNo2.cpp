@@ -1,23 +1,43 @@
 #include<iostream>
 using namespace std;
-int main()
+void findTwoUniqueNo(int *a, int n)
 {
-    int a[] = {1,1,2,2,3,3,4,5}, j=0;
-    int n = sizeof(a)/sizeof(int), res=0;
+    int res=0;
+   for(int i=0;i<n;i++ )
+   {
+       res ^= a[i];
+   }
+   int j=0, temp =res;
+
+   while(temp>0)
+   {
+       if(temp&1)
+       {
+           break;
+       }
+       temp >>= 1;
+       j++;
+   }
+    int mask = 1<<j;
+    int firstNo = 0;
     for(int i=0;i<n;i++)
     {
-        res ^= a[i];
-    }
-    int temp;
-    temp = res;
-    while(temp> 0)
-    {
-        if(res&1)
+        if((mask&a[i])!=0)
         {
-            break;
+           firstNo  ^= a[i];
         }
-        j++;
-        res >>= 1;
+
     }
+    int secondNo = firstNo^res;
+    cout<<"Unique No's are : "<<firstNo<<" "<<secondNo<<endl;
+
+}
+int main()
+{
+    int a[] = {1,1,2,2,3,3,5,6};
+    int n = sizeof(a)/sizeof(int);
+    findTwoUniqueNo(a,n);
     return 0;
 }
+
+
