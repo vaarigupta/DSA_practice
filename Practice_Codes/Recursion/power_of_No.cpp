@@ -1,17 +1,18 @@
 #include<iostream>
 using namespace std;
-int fact(int n)
+int power(int a, int b)
 {
-    if(n==1)
+    if(b==0)
     {
         return 1;
     }
-    return n*fact(n-1);
+    return a*power(a,b-1);
+
 }
 int main()
 {
-    int n;
-    cin>>n;
-    cout<<"factorial :"<<fact(n)<<" "<<endl;
+    int a,b;
+    cin>>a>>b;
+    cout<<"Power of number :"<<power(a,b)<<" "<<endl;
     return 0;
 }
