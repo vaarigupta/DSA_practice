@@ -86,9 +86,42 @@ public:
     }
 
     ///complete  it ?????
-    node* deleteNode(string key)
+    void deleteNode(string key)
     {
+        int idx = hashFn(key);
+        node* temp = ptrArray[idx];
 
+        ///deletion at head
+        if(temp->key == key)
+        {
+            ptrArray[idx] = temp->next;
+            temp->next = NULL;
+            delete temp;
+        }
+        ///deletion in middle
+        node* prev = temp;
+        while(temp!=NULL)
+        {
+            if(temp->key == key)
+            {
+                prev->next = temp->next;
+                temp->next = NULL;
+                delete temp;
+            }
+            ///deletion at end
+            if(temp->next==NULL && temp->key == key)
+            {
+               prev->next = NULL;
+               delete temp;
+            }
+            prev = temp;
+            temp = temp->next;
+        }
+//        if()
+//        {
+//            cout<<"key not found - cannot delete "<<endl;
+//        }
+//        ///deletion at end
     }
 
 };
@@ -109,17 +142,44 @@ int main()
     h.insertNode("papaya",60);
     h.print();
     string input;
-    cout<<"Enter the key :"<<endl;
+//    cout<<"Enter the key :"<<endl;
+//    cin>>input;
+//    node * temp = h.searchKey(input);
+//    if(temp==NULL)
+//    {
+//    cout<<"Not found"<<endl;
+//    }
+//    else
+//    {
+//        cout<<temp->value<<endl;
+//    }
+    cout<<"Enter the key to delete :"<<endl;
     cin>>input;
-    node * temp = h.searchKey(input);
-    if(temp==NULL)
-    {
-    cout<<"Not found"<<endl;
-    }
-    else
-    {
-        cout<<temp->value<<endl;
-    }
+    h.deleteNode(input);
+    h.print();
+        cout<<"Enter the key to delete :"<<endl;
+    cin>>input;
+    h.deleteNode(input);
+    h.print();
+
+        cout<<"Enter the key to delete :"<<endl;
+    cin>>input;
+    h.deleteNode(input);
+    h.print();
+
+        cout<<"Enter the key to delete :"<<endl;
+    cin>>input;
+    h.deleteNode(input);
+    h.print();
+
+        cout<<"Enter the key to delete :"<<endl;
+    cin>>input;
+    h.deleteNode(input);
+    h.print();
+
+
+
+
 
 
     return 0;

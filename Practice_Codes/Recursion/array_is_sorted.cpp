@@ -7,7 +7,7 @@ bool is_Sorted(int *a, int n)
         {
             return true;
         }
-        if(a[0]<a[1] && is_Sorted(a+1,n-1))
+        if(a[0]<=a[1] && is_Sorted(a+1,n-1))
         {
             return true;
         }
@@ -17,7 +17,7 @@ bool is_Sorted(int *a, int n)
 int main()
 {
     int n;
-    int a[] = {1,2,3,4,10,4,5,6,7};
+    int a[] = {1,2,3,4,4,4,4,7};
     n = sizeof(a)/sizeof(int);
     if(is_Sorted(a,n))
     {
