@@ -14,15 +14,25 @@ class node
         value = v;
         next = NULL;
     }
+
+    ~node()
+    {
+        if(next!=NULL)
+        {
+            delete next;
+        }
+    }
 };
 
 class hashTable
 {
     node** ptrArray;
-    int cs, ts=7;
+    int cs, ts;
 public:
     hashTable(int ds=7)
     {
+        cs=0;
+        ts=7;
         ptrArray = new node*[ds];
         for(int i=0;i<ds;i++)
         {
@@ -38,13 +48,44 @@ public:
         {
             ans += key[l-i-1]*p;
             p *= 37;
-            p %= ts;/// to prevent overflow of no
+            p %= ts;/// to prevent overflow of number
             ans %= ts; /// to limit the indexes within the table size
 
         }
         return ans;
     }
+    void rehash()
+    {
+        node** oldPtrArray = ptrArray;
+        int oldts = ts;
+        ts <<=1;
+        ptrArray = new node*[ts];
 
+        ///creation of new hashTable and pointing each node pointer to NULL
+        for(int i=0;i<ts;i++)
+        {
+            ptrArray[i] = NULL;
+        }
+
+        ///copying elements
+        for(int i=0;i<oldts;i++)
+        {
+            node* temp = oldPtrArray[i];
+            if(temp!=NULL)
+            {
+               while(temp!=NULL)
+            {
+                insertNode(temp->key,temp->value);
+                temp = temp->next;
+            }
+            delete oldPtrArray[i];///calling the recursive destructor
+            }
+
+        }
+
+        delete []oldPtrArray;
+
+    }
     void insertNode(string key, int value)
     {
         int index = hashFn(key);
@@ -52,6 +93,14 @@ public:
         node* n = new node(key,value);
         n->next = ptrArray[index];
         ptrArray[index] = n;
+
+        cs++;
+        float load_factor = (float)cs/ts;
+        if(load_factor>= 0.7)
+        {
+            cout<<"Load factor is"<<load_factor<<endl;
+            rehash();
+        }
     }
     void print()
     {
@@ -117,17 +166,12 @@ public:
             prev = temp;
             temp = temp->next;
         }
-//        if()
-//        {
-//            cout<<"key not found - cannot delete "<<endl;
-//        }
-//        ///deletion at end
     }
 
 };
 int main()
 {
-    hashTable h(57);
+    hashTable h(7);
     h.insertNode("apple",10);
     h.insertNode("mango",20);
     h.insertNode("banana",30);
@@ -142,17 +186,17 @@ int main()
     h.insertNode("papaya",60);
     h.print();
     string input;
-//    cout<<"Enter the key :"<<endl;
-//    cin>>input;
-//    node * temp = h.searchKey(input);
-//    if(temp==NULL)
-//    {
-//    cout<<"Not found"<<endl;
-//    }
-//    else
-//    {
-//        cout<<temp->value<<endl;
-//    }
+    cout<<"Enter the key :"<<endl;
+    cin>>input;
+    node * temp = h.searchKey(input);
+    if(temp==NULL)
+    {
+    cout<<"Not found"<<endl;
+    }
+    else
+    {
+        cout<<temp->value<<endl;
+    }
     cout<<"Enter the key to delete :"<<endl;
     cin>>input;
     h.deleteNode(input);
@@ -176,11 +220,5 @@ int main()
     cin>>input;
     h.deleteNode(input);
     h.print();
-
-
-
-
-
-
     return 0;
 }
