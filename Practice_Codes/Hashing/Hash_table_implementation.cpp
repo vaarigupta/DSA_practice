@@ -134,6 +134,18 @@ public:
         return NULL;
     }
 
+    node& operator[](string key)
+    {
+        node* f = searchKey(key);
+        if(f==NULL)
+        {
+            int random;
+            insertNode(key,random);
+            f = searchKey(key);
+        }
+        return *f;
+    }
+
     ///complete  it ?????
     void deleteNode(string key)
     {
@@ -184,41 +196,42 @@ int main()
     h.insertNode("orange",40);
     h.insertNode("kiwi",50);
     h.insertNode("papaya",60);
+    h["papaya"] = 120;
     h.print();
-    string input;
-    cout<<"Enter the key :"<<endl;
-    cin>>input;
-    node * temp = h.searchKey(input);
-    if(temp==NULL)
-    {
-    cout<<"Not found"<<endl;
-    }
-    else
-    {
-        cout<<temp->value<<endl;
-    }
-    cout<<"Enter the key to delete :"<<endl;
-    cin>>input;
-    h.deleteNode(input);
-    h.print();
-        cout<<"Enter the key to delete :"<<endl;
-    cin>>input;
-    h.deleteNode(input);
-    h.print();
-
-        cout<<"Enter the key to delete :"<<endl;
-    cin>>input;
-    h.deleteNode(input);
-    h.print();
-
-        cout<<"Enter the key to delete :"<<endl;
-    cin>>input;
-    h.deleteNode(input);
-    h.print();
-
-        cout<<"Enter the key to delete :"<<endl;
-    cin>>input;
-    h.deleteNode(input);
-    h.print();
+//    string input;
+//    cout<<"Enter the key :"<<endl;
+//    cin>>input;
+//    node * temp = h.searchKey(input);
+//    if(temp==NULL)
+//    {
+//    cout<<"Not found"<<endl;
+//    }
+//    else
+//    {
+//        cout<<temp->value<<endl;
+//    }
+//    cout<<"Enter the key to delete :"<<endl;
+//    cin>>input;
+//    h.deleteNode(input);
+//    h.print();
+//        cout<<"Enter the key to delete :"<<endl;
+//    cin>>input;
+//    h.deleteNode(input);
+//    h.print();
+//
+//        cout<<"Enter the key to delete :"<<endl;
+//    cin>>input;
+//    h.deleteNode(input);
+//    h.print();
+//
+//        cout<<"Enter the key to delete :"<<endl;
+//    cin>>input;
+//    h.deleteNode(input);
+//    h.print();
+//
+//        cout<<"Enter the key to delete :"<<endl;
+//    cin>>input;
+//    h.deleteNode(input);
+//    h.print();
     return 0;
 }
