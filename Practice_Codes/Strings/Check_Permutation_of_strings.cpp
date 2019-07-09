@@ -3,22 +3,35 @@
 using namespace std;
 bool permutateStr( char* a,char *b)
 {
+    int freq[27]={0};
     int n1 = strlen(a);
     int n2 = strlen(b);
-    int i=0, j=n2-1;
     if(n1==n2)
     {
-        while(a[i]==b[j] && (i<j))
-        {
-            i++;
-            j--;
-        }
-        if(i==j)
-        {
-            return true;
-        }
+    for(int i=0;i<n1;i++)
+    {
+       int val = a[i] - 'a';
+       freq[val]++;
+    }
+    for(int i=0;i<n2;i++)
+    {
+        int val = b[i] - 'a';
+        freq[val]--;
+    }
+    int n = sizeof(freq)/sizeof(int);
+    int i=0;
+    while(freq[i]==0 && i<n)
+    {
+        i++;
+    }
+    if(i==n)
+    {
+        return true;
+    }
     }
     return false;
+
+
 
 
 }
