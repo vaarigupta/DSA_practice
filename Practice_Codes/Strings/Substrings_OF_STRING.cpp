@@ -1,6 +1,7 @@
 #include<iostream>
 #include<cstring>
 using namespace std;
+///subtstrings of a given string
 void substring(char *a)
 {
     int n= strlen(a);

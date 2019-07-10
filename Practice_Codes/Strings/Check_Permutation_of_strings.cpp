@@ -1,6 +1,7 @@
 #include<iostream>
 #include<cstring>
 using namespace std;
+///strings are permutation of each other
 bool permutateStr( char* a,char *b)
 {
     int freq[27]={0};
