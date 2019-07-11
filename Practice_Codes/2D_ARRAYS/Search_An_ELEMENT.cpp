@@ -31,18 +31,13 @@ void searchKey(int a[][10], int r, int c, int key)
                 if(a[row][col]==key)
                 {
                     cout<<key<<" is found at ("<<row<<","<<col<<")"<<endl;
-                    break;
+                    return;
                 }
             }
-            break;
         }
     }
-    if(row==r)
-    {
+
         cout<<"No such element found "<<endl;
-    }
-
-
 }
 int main()
 {
