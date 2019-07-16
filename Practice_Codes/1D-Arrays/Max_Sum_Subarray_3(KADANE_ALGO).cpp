@@ -1,40 +1,33 @@
 #include<iostream>
 using namespace std;
 
-///generating subarrays - in o(n3) time
+///generating max sum of subarray in o(n) time - "KADANE ALGO"
 void maxSum(int a[], int n)
 {
-    int currSum = 0, maxSum1 = -100, x=0, y=0;
+    int currSum = 0, maxSum1 = 0;
     for(int i=0;i<n;i++)
     {
-        for(int j=i;j<n;j++)
-        {
-            currSum = 0;
-            for(int k=i;k<=j;k++)
-            {
-                //cout<<a[k]<<" ";
-
-                currSum += a[k];
-            }
-            if(currSum> maxSum1)
-            {
-                x=i;
-                y=j;
-                maxSum1 =currSum;
-            }
-
-        }
+       currSum += a[i];
+       if(currSum<0)
+       {
+           currSum = 0;
+       }
+       maxSum1 = max(maxSum1,currSum);
     }
     cout<<"Max Sum :"<<maxSum1<<endl;
-    for(int i=x;i<=y;i++)
-    {
-        cout<<a[i]<<" ";
-    }
+//    for(int i=x;i<=y;i++)
+//    {
+//        cout<<a[i]<<" ";
+//    }
 }
 int main()
 {
-    int a[] = {-4,1,3,-2,6,2,-1,4,-7};
-    int n = sizeof(a)/sizeof(int);
+    int a[100]={0},n;
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
     maxSum(a,n);
     return 0;
 }
