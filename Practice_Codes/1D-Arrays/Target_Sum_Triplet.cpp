@@ -14,19 +14,19 @@ int main()
     sort(a,a+n);
 
     int i=0, j =n-1,temp=0;
-    for(int k=0;k<n;k++)
+    for(int k=0;k<n-2;k++)
     {
-        temp = key - a[k];
         i= k+1;
-        while(i<=j)
+        j = n-1;
+        while(i<j)
     {
-        if((a[i]+a[j])==temp)
+        if((a[k]+a[i]+a[j])==key)
         {
             cout<<a[k]<<", "<<a[i]<<" and "<<a[j]<<endl;
             i++;
             j--;
         }
-        else if((a[i]+a[j])>temp)
+        else if((a[k]+a[i]+a[j])>key)
         {
             j--;
         }

@@ -4,20 +4,19 @@ using namespace std;
 ///finding max  element in array
 int maxElement(int a[], int n)
 {
-    int currNum = 0, maxNum=0;
-    for(int i=0;i<n;i++)
+    int maxNum=a[0];
+    for(int i=1;i<n;i++)
     {
-        currNum = a[i];
-        if(currNum>maxNum)
+
+        if(a[i]>maxNum)
         {
-            maxNum = currNum;
+            maxNum = a[i];
         }
 
     }
     return maxNum;
 
 }
-
 int main()
 {
     int n;
