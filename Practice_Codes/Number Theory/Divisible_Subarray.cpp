@@ -17,8 +17,11 @@ int main()
         {
             cin>>a[i];
            sum += a[i];
+           //cout<<"a ---> "<<sum<<endl;
            sum %=n;
+           //cout<<"b ---> "<<sum<<endl;
            sum = (sum+n)%n;
+           //cout<<"c ---> "<<sum<<endl;
            freq[sum]++;
         }
         ll ans =0;

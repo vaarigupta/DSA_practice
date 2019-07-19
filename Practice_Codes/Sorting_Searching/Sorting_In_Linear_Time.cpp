@@ -1,11 +1,10 @@
 #include<iostream>
-#define ll long long
 using namespace std;
-ll freq[1000010]={0};
-ll a[1000010] = {0};
+
 int main()
 {
-    int n;
+    int a[10000] = {0},freq[5]={0};;
+    int n ,k=0;;
     cin>>n;
     for(int i=0;i<n;i++)
     {
@@ -17,17 +16,15 @@ int main()
     {
         freq[a[i]]++;
     }
-    int j=0;
-    for(int i=0;i<=1000010;i++)
+
+    for(int i=0;i<3 && k<n;i++)
     {
-       while(freq[i]>0)
-       {
-           a[j++] = i;
-           freq[i]--;
-       }
+        while(freq[i]!=0)
+        {
+            a[k++] = i;
+            freq[i]--;
+        }
     }
-
-
     for(int i=0;i<n;i++)
     {
         cout<<a[i]<<endl;

@@ -10,28 +10,21 @@ int main()
     for(int i=0;i<t;i++)
     {
         cin>>n;
-        for(int i=0;i<n;i++)
-        {
-            cin>>a[i];
-        }
-        ll sum =0,mod=0;
+        ll sum =0;
         memset(freq, 0, sizeof(freq));
         freq[0] = 1;
         for(int i=0;i<n;i++)
         {
+            cin>>a[i];
            sum += a[i];
-           mod = 0;
-           mod = sum%n;
-           if(sum<=0)
-           {
-               mod = (sum+n)%n;
-           }
-           freq[mod]++;
+            sum = sum%n;
+           sum = (sum+n)%n;
+            freq[sum]++;
         }
         ll ans =0;
         for(int i=0;i<n;i++)
         {
-            cout<<freq[i]<<" ";
+            //cout<<freq[i]<<" ";
             ll no = freq[i];
             ans += (no*(no-1)/2);
         }
@@ -42,6 +35,9 @@ int main()
 
 /*
 
+1
+5
+-10 -14 7 8 -15
 DIVISIBLE SUBARRAYS
 You are given N elements, a1,a2,a3….aN. Find the number of good sub-arrays.
 A good sub-array is a sub-array [ai,ai+1,ai+2….aj] such that (ai+ai+1+ai+2+….+aj) is divisible by N.

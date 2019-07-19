@@ -1,14 +1,13 @@
 #include<iostream>
 using namespace std;
-int a[1000010]={0};
-void primeSieve(int *p)
+int p[100000];
+void primeSieve()
 {
     p[2] = 1;
     for(int i=3;i<=1000000;i+=2)
     {
         p[i] = 1;
     }
-
     for(int i=3;i<=1000000;i+=2)
     {
         if(p[i])
@@ -19,28 +18,29 @@ void primeSieve(int *p)
             }
         }
     }
-    a[1] = 2;
-    int k=2;
+
+
+}
+int a[1000000]={0};
+int main()
+{
+
+    int t,n;
+    cin>>t;
+    primeSieve();
+    a[0] = 2;
+    int k=1;
     for(int i=3;i<=1000000;i+=2)
     {
         if(p[i])
         {
-            a[k] = i;
-            k++;
+            a[k++] = i;
         }
     }
-
-}
-int main()
-{
-    int *p = new int[1000010]{0};
-    int t,n;
-    cin>>t;
-    primeSieve(p);
     for(int i=0;i<t;i++)
     {
         cin>>n;
-        cout<<a[n]<<endl;
+        cout<<a[n-1]<<endl;
     }
 
     return 0;
