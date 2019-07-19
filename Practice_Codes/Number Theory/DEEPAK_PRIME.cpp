@@ -2,18 +2,18 @@
 using namespace std;
 int primeSieve(int *p, int n)
 {
-    int a[1000]={0};
+    int a[10000]={0};
     p[2] = 1;
-    for(int i=3;i<=1000;i+=2)
+    for(int i=3;i<=10000;i+=2)
     {
         p[i] = 1;
     }
 
-    for(int i=3;i<=1000;i+=2)
+    for(int i=3;i<=10000;i+=2)
     {
         if(p[i])
         {
-            for(int j=i*i;j<=1000;j+= (2*i))
+            for(int j=i*i;j<=10000;j+= (2*i))
             {
                 p[j] = 0;
             }
@@ -21,7 +21,7 @@ int primeSieve(int *p, int n)
     }
     a[1] = 2;
     int k=2;
-    for(int i=3;i<=1000;i+=2)
+    for(int i=3;i<=10000;i+=2)
     {
         if(p[i])
         {
@@ -34,7 +34,7 @@ int primeSieve(int *p, int n)
 }
 int main()
 {
-    int *p = new int[1000]{0};
+    int *p = new int[10000]{0};
     int n;
     cin>>n;
     cout<<primeSieve(p,n);
