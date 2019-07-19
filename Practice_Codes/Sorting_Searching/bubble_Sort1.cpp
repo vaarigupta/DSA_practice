@@ -11,21 +11,16 @@ int main()
         cin>>a[i];
     }
 
-    int minValue = 0,minIndex=0;
+    //int minValue = 0,minIndex=0;
     for(int i=0;i<(n-1);i++)
     {
-        minValue = a[i];
-        minIndex = i;
-        for(int j=i+1;j<n;j++)
+        for(int j=1;j<(n-i);j++)
         {
-            if(minValue>a[j])
+            if(a[j-1]>a[j])
             {
-                minValue = a[j];
-                minIndex = j;
+                swap(a[j-1],a[j]);
             }
-
         }
-        swap(a[i],a[minIndex]);
     }
     for(int i=0;i<n;i++)
     {
@@ -33,3 +28,4 @@ int main()
     }
     return 0;
 }
+
