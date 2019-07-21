@@ -1,10 +1,11 @@
 #include<iostream>
 using namespace std;
-
+long int a[1000000] = {0};
+long int n;
 int main()
 {
-    int a[10000] = {0},freq[5]={0};;
-    int n ,k=0;;
+    int freq[5]={0};
+    int k=0;
     cin>>n;
     for(int i=0;i<n;i++)
     {
@@ -19,7 +20,7 @@ int main()
 
     for(int i=0;i<3 && k<n;i++)
     {
-        while(freq[i]!=0)
+        while(freq[i]>=0)
         {
             a[k++] = i;
             freq[i]--;
