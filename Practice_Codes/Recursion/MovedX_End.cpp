@@ -2,25 +2,6 @@
 #include<cstring>
 using namespace std;
 
-//void moveX(char *input , char * output ,int n, int i, int j)
-//{
-//    if(input[i]=='\0')
-//    {
-//        output[n]='\0';
-//        cout<<output<<" ";
-//        return;
-//    }
-//    if(input[i]=='x')
-//    {
-//        output[n-1-k]= 'x';
-//        moveX(input,output,n,i+1,j+1);
-//    }
-//    else
-//    {
-//        output[j] = input[i];
-//        moveX(input,output,n,i+1,j+1);
-//    }
-//}
 void moveX(char *input , char * output ,int n, int i, int j)
 {
     if(input[i]=='\0')
