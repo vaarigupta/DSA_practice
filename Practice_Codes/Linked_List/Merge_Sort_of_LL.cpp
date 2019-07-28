@@ -75,49 +75,79 @@ ostream & operator<<(ostream &os , node* head)
     return os;
 }
 
-void reverseList(node *&head)
+node* merge2LL(node* head, node* head2)
 {
-    node * prev = NULL;
-    node* curr = head;
-    node* N = NULL;
-    while(curr!=NULL)
+    if(head==NULL)
     {
-        N = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = N;
+        return head2;
     }
-    head = prev;
+    if(head2 == NULL)
+    {
+        return head;
+    }
+   node *newHead ;
+   if(head->data <= head2->data)
+   {
+       newHead = head;
+       newHead->next = merge2LL(head->next, head2);
+   }
+   else
+   {
+       newHead = head2;
+       newHead->next = merge2LL(head, head2->next);
+   }
+   return newHead;
 }
-
-node* reverseRecursive(node *head)
+node* midPoint(node* head)
 {
     if(head==NULL || head->next==NULL)
     {
         return head;
     }
-    node *smallHead = reverseRecursive(head->next);
-    node* curr = head;
-    curr->next->next = curr;
-    curr->next = NULL;
-    return smallHead;
+    node* slow = head;
+    node* fast= head->next;
+
+    while( fast!=NULL && fast->next!=NULL)
+    {
+
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+    return slow;
+
+
 
 }
+node* mergeSort(node* head )
+{
+    if(head==NULL || head->next==NULL)
+    {
+        return head;
+    }
+    ///divide the list
+    node* mid = midPoint(head);
+    node* l1 = head;
+    node* l2 = mid->next;
+    mid->next = NULL;
 
-
+    ///sort the list
+    l1 = mergeSort(l1);
+    l2 = mergeSort(l2);
+    ///merge the list
+    return merge2LL(l1,l2);
+}
 int main(){
 
 
     ///Create a LL of nodes
     node* head = NULL;
-
-
+   // node* head2 = NULL;
     cin>>head;
-    cout<<head<<endl<<endl;
-    cout<<"Reverse A list "<<endl;
-    head = reverseRecursive(head);
-    cout<<head;
-
+    cout<<"Linked list :"<<endl<<head<<endl;
+    head = mergeSort(head);
+    cout<<head<<endl;
 
 return 0;
 }
+
+

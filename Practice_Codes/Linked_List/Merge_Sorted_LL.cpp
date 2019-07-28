@@ -75,49 +75,40 @@ ostream & operator<<(ostream &os , node* head)
     return os;
 }
 
-void reverseList(node *&head)
+node* merge2LL(node* head, node* head2)
 {
-    node * prev = NULL;
-    node* curr = head;
-    node* N = NULL;
-    while(curr!=NULL)
+    if(head==NULL)
     {
-        N = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = N;
+        return head2;
     }
-    head = prev;
-}
-
-node* reverseRecursive(node *head)
-{
-    if(head==NULL || head->next==NULL)
+    if(head2 == NULL)
     {
         return head;
     }
-    node *smallHead = reverseRecursive(head->next);
-    node* curr = head;
-    curr->next->next = curr;
-    curr->next = NULL;
-    return smallHead;
-
+   node *newHead ;
+   if(head->data <= head2->data)
+   {
+       newHead = head;
+       newHead->next = merge2LL(head->next, head2);
+   }
+   else
+   {
+       newHead = head2;
+       newHead->next = merge2LL(head, head2->next);
+   }
+   return newHead;
 }
-
-
 int main(){
 
 
     ///Create a LL of nodes
     node* head = NULL;
-
-
-    cin>>head;
-    cout<<head<<endl<<endl;
-    cout<<"Reverse A list "<<endl;
-    head = reverseRecursive(head);
-    cout<<head;
-
+    node* head2 = NULL;
+    cin>>head>>head2;
+    cout<<"Linked list :"<<endl<<head<<endl<<head2<<endl;
+    head = merge2LL(head, head2);
+    cout<<head<<endl;
 
 return 0;
 }
+

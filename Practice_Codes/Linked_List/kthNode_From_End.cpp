@@ -75,35 +75,25 @@ ostream & operator<<(ostream &os , node* head)
     return os;
 }
 
-void reverseList(node *&head)
+
+
+int kThNodeFromEnd(node *head, int k)
 {
-    node * prev = NULL;
-    node* curr = head;
-    node* N = NULL;
-    while(curr!=NULL)
+    node* fast = head;
+    node* slow = head;
+    for(int i=1;i<=k;i++)
     {
-        N = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = N;
-    }
-    head = prev;
-}
+        fast = fast->next;
 
-node* reverseRecursive(node *head)
-{
-    if(head==NULL || head->next==NULL)
+    }
+
+    while(fast!=NULL)
     {
-        return head;
+        fast = fast->next;
+        slow = slow->next;
     }
-    node *smallHead = reverseRecursive(head->next);
-    node* curr = head;
-    curr->next->next = curr;
-    curr->next = NULL;
-    return smallHead;
-
+    return slow->data;
 }
-
 
 int main(){
 
@@ -114,10 +104,11 @@ int main(){
 
     cin>>head;
     cout<<head<<endl<<endl;
-    cout<<"Reverse A list "<<endl;
-    head = reverseRecursive(head);
-    cout<<head;
-
+    int k;
+    cout<<"Enter k to find kth Node from end"<<endl;
+    cin>>k;
+    cout<<"kth Node from End : "<<kThNodeFromEnd(head,k);
 
 return 0;
 }
+

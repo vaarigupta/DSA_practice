@@ -75,35 +75,28 @@ ostream & operator<<(ostream &os , node* head)
     return os;
 }
 
-void reverseList(node *&head)
-{
-    node * prev = NULL;
-    node* curr = head;
-    node* N = NULL;
-    while(curr!=NULL)
-    {
-        N = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = N;
-    }
-    head = prev;
-}
 
-node* reverseRecursive(node *head)
+
+int midPoint(node* head)
 {
     if(head==NULL || head->next==NULL)
     {
-        return head;
+        return head->data;
     }
-    node *smallHead = reverseRecursive(head->next);
-    node* curr = head;
-    curr->next->next = curr;
-    curr->next = NULL;
-    return smallHead;
+    node* slow = head;
+    node* fast= head->next;
+
+    while( fast!=NULL && fast->next!=NULL)
+    {
+
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+    return slow->data;
+
+
 
 }
-
 
 int main(){
 
@@ -114,10 +107,9 @@ int main(){
 
     cin>>head;
     cout<<head<<endl<<endl;
-    cout<<"Reverse A list "<<endl;
-    head = reverseRecursive(head);
-    cout<<head;
 
+    cout<<"Mid point :"<<midPoint(head)<<endl;
 
 return 0;
 }
+
