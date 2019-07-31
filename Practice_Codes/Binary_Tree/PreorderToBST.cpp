@@ -190,35 +190,32 @@ node* deletionInBST(node* root, int d)
 
 }
 
-
+node* PreOrderToBST(node* root,int *a,int n)
+{
+    if(n==0)
+    {
+        return NULL;
+    }
+    root = new node(a[0]);
+    if(a[0]<=root->data)
+    {
+        root->left = PreOrderToBST(root->left,a+1,n-1);
+    }
+    else
+    {
+        root->right = PreOrderToBST(root->right,a+1,n-1);
+    }
+    return root;
+}
 int main()
 {
    node*root = NULL;
-   root = buildBST(root);
+    int a[] = {5,3,1,7,6,8};
+    int n = sizeof(a)/sizeof(int);
+   root = PreOrderToBST(root,a,n-1);
    levelOrderPrint(root);
    cout<<endl;
    InOrderPrint(root);
-   int key;
-   cout<<endl<<"enter key "<<endl;
-   cin>>key;
-   if(searchInBST(root,key))
-   {
-       cout<<"found"<<endl;
-   }
-   else
-   {
-       cout<<" not found"<<endl;
-   }
-    root = deletionInBST(root,key);
-    InOrderPrint(root);
-   cout<<endl<<"enter key "<<endl;
-   cin>>key;
-    root = deletionInBST(root,key);
-    InOrderPrint(root);
-     cout<<endl<<"enter key "<<endl;
-   cin>>key;
-    root = deletionInBST(root,key);
-    InOrderPrint(root);
     return 0;
 }
 
@@ -236,6 +233,7 @@ found
 
 
 */
+
 
 
 
