@@ -1,22 +1,22 @@
 /*
 
-PALINDROME
-Check if a linked list is a palindrome.( Boolean return type )
+SORT LINKED LIST USING INSERTION SORT
+Given a linked list with n nodes. Sort the linked list using insertion sort.
 
 Input Format:
-Add N space separated elements in the list
+First line contains the number of nodes in the linked list n and then next line contains n space separated integers representing the node values of the linked list.
 
 Constraints:
-None
+n < 30
 
 Output Format
-Boolean answer( true or false)
+Print the linked list after sorting it using insertion sort.
 
 Sample Input
 5
-1 2 3 6 8
+2 3 4 1 5
 Sample Output
-False
+1 2 3 4 5
 
 */
 #include<iostream>
@@ -62,10 +62,11 @@ void insertAtTail(node* &head, int d)
     }
     node* n = new node(d);
     temp->next = n;
-    n->prev = temp;
+    n->prev= temp;
     return;
+
 }
-node* buildList(node* &head, int n)
+node* buildList(node*&head, int n)
 {
     int d;
     while(n--)
@@ -74,7 +75,6 @@ node* buildList(node* &head, int n)
         insertAtTail(head,d);
     }
     return head;
-
 }
 void printList(node* head)
 {
@@ -84,26 +84,21 @@ void printList(node* head)
         head = head->next;
     }
 }
-bool palindrome(node* head)
+void insertionSort(node* &head)
 {
-    node* temp = head;
-    while(temp->next!=NULL)
+    node* temp = head->next;
+    node* backptr = NULL;
+    int no = 0;
+    while(temp!=NULL)
     {
+        no = temp->data;
+        for(backptr = temp->prev; backptr!=NULL && backptr->data >no;backptr= backptr->prev)
+        {
+           backptr->next->data = backptr->data;
+        }
+        backptr->next->data = no;
         temp = temp->next;
     }
-    while(head!=temp)
-    {
-        if(head->data==temp->data)
-        {
-            head = head->next;
-            temp = temp->prev;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    return true;
 }
 int main()
 {
@@ -111,15 +106,8 @@ int main()
     int n;
     cin>>n;
     head = buildList(head,n);
-    //printList(head);
-    if(palindrome(head))
-    {
-        cout<<"True";
-    }
-    else
-    {
-        cout<<"False";
-    }
+    insertionSort(head);
+    printList(head);
 
 
     return 0;

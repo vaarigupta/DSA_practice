@@ -83,17 +83,12 @@ void printList(node* head)
     }
 }
 
-//istream& operator>>(istream &is,node* &head)
-//{
-//    buildList(head);
-//    return is
-//}
 ostream& operator<<(ostream &os, node* head)
 {
     printList(head);
     return os;
 }
-node* Merge(node* &head1, node* &head2)
+node* Merge(node*head1, node*head2, node*mergeHead)
 {
     if(head1==NULL)
     {
@@ -105,19 +100,21 @@ node* Merge(node* &head1, node* &head2)
     }
     if(head1->data<=head2->data)
     {
-        head1->next = Merge(head1->next, head2);
-        return head1;
+        mergeHead = head1;
+        mergeHead->next = Merge(head1->next, head2, mergeHead);
     }
     else
     {
-        head2->next = Merge(head1, head2->next);
-        return head2;
+        mergeHead = head2;
+        mergeHead->next = Merge(head1, head2->next,mergeHead);
     }
+    return mergeHead;
 }
 int main()
 {
     node* head1 = NULL;
     node* head2 = NULL;
+    node* newHead = NULL;
     ll t,n1,n2;
     cin>>t;
     while(t--)
@@ -126,9 +123,8 @@ int main()
         head1 = buildList(head1,n1);
         cin>>n2;
         head2 = buildList(head2,n2);
-        head1 = Merge(head1,head2);
-        cout<<head1;
-        //cout<<head1<<endl<<head2;
+        newHead = Merge(head1,head2, newHead);
+        cout<<newHead;
     }
 
 

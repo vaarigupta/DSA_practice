@@ -16,8 +16,8 @@ public:
 void insertion(node* &head, int d)
 {
     node* n = new node(d);
-    node* temp = head;/// to traverse the linked list and find its tail
     n->next = head;
+    node* temp = head;/// to traverse the linked list and find its tail
     if(head!=NULL)
     {
         while(temp->next!=head)
