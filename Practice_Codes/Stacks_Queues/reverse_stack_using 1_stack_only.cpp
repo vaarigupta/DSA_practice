@@ -9,23 +9,34 @@ void print(stack<int> s, int n)
         s.pop();
     }
 }
-void reverseStack(stack<int> &s)
+void transfer (stack<int> &s, stack<int> &r, int n , int k )
 {
-    ///base case
-    if(s.empty())
+    for(int i=0;i<(n-1-k);i++)
     {
-        return;
+        r.push(s.top());
+        s.pop();
     }
-    ///rec case
+}
+void reverseStack(stack<int> &s, stack<int> &r, int n)
+{
+    for(int k=0;k<n;k++)
+    {
+        ///save the top element of stack -1
     int temp = s.top();
     s.pop();
-    reverseStack(s);
-    cout<<temp<<endl;
+    ///transfer the (n-1-k) elements from stack-1 to stack-2
+    transfer(s,r,n,k);
+    ///push the saved top element onto the stack-1
+    s.push(temp);
+    ///transfer the (n-k-1) from stack-2 to stack-1
+    transfer(r,s,n,k);
+
+    }
 
 }
 int main()
 {
-    stack<int> s;
+    stack<int> s,r;
     int n,no;
     cin>>n;
     for(int i=0;i<n;i++)
@@ -36,7 +47,8 @@ int main()
     cout<<"Original stack : "<<endl;
      print(s,n);
      cout<<"Reverse stack : "<<endl;
-    reverseStack(s);
+    reverseStack(s,r,n);
+    print(s,n);
 
 
 
