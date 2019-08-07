@@ -175,5 +175,9 @@ int main()
 
 */
 
-
+//
+//hey @LPLC0114, your approach is not correct.
+//here is correct approach to solve these question.
+//Traverse the bigger list from the first node till d (where d= absolute differece of length of two LL)nodes so that from here onwards both the lists have equal no of nodes.
+//Then we can traverse both the lists in parallel till we come across a common node. This common node will be intersection point.
 
