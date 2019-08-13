@@ -49,7 +49,7 @@ void max_profitBU()
 int main()
 {
     int dp[100][100]={0};
-    int wines[] = {2,3,5,1,4};
+    int wines[] = {2,4,6,2,5};
     int n = sizeof(wines)/sizeof(int);
     cout<<"Recursive sol :"<<endl<<max_profit(wines,0,n-1,1)<<endl;
     cout<<"Top down sol :"<<endl<<max_profitTD(wines,0,n-1,1,dp)<<endl;
