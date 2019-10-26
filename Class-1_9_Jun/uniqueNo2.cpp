@@ -19,6 +19,9 @@ void findTwoUniqueNo(int *a, int n)
        j++;
    }
     int mask = 1<<j;
+    /// this mask will help us to nullify other number
+    ///bcz set bit comes only from only one of the numbers
+    /// and ANDing of mask with first number will definitely give only first number
     int firstNo = 0;
     for(int i=0;i<n;i++)
     {

@@ -12,6 +12,7 @@ bool checkPrime(int n)
     }
     if(n&1 == 0)
     {
+        ///all even numbers
         return false;
     }
     for(int i=3;(i*i)<=n;i+=2)
