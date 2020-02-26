@@ -32,12 +32,17 @@ void findTwoUniqueNo(int *a, int n)
 
    while(temp>0)
    {
-       if(temp&1)
+       if(!temp&1)
+       {
+           j++;
+           //break;
+       }
+       else
        {
            break;
        }
        temp >>= 1;
-       j++;
+
    }
     int mask = 1<<j;
     /// this mask will help us to nullify other number
@@ -46,7 +51,7 @@ void findTwoUniqueNo(int *a, int n)
     int firstNo = 0;
     for(int i=0;i<n;i++)
     {
-        if((mask&a[i])!=0)
+        if(mask&a[i])
         {
            firstNo  ^= a[i];
         }
@@ -58,7 +63,7 @@ void findTwoUniqueNo(int *a, int n)
 }
 int main()
 {
-    int a[] = {1,1,2,2,3,3,5,6};
+    int a[] = {1,1,2,2,3,3,5,5,6,6,7,8};
     int n = sizeof(a)/sizeof(int);
     findTwoUniqueNo(a,n);
     return 0;
