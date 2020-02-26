@@ -58,17 +58,17 @@ int uniqueNo3(int *a, int n)
 
         int size = 8*sizeof(int);
         //return size;
-        int sumOfBits = 0 , pow_of_two=1,ans=0;
+        int sumOfBits = 0 , ans=0;
         for(int i=0;i<size;i++)
         {
             sumOfBits = 0;
             for(int j=0;j<nums.size();j++)
             {
-                sumOfBits += nums[i]&1;
-                nums[i] >>=1;
+                sumOfBits += (nums[j]>>i)&1;
+
             }
-            ans += (sumOfBits%3)*pow_of_two;
-            pow_of_two *= 2;
+            ans += (sumOfBits%3)*(1<<i);
+           // pow_of_two *= 2;
         }
         return ans;
 
