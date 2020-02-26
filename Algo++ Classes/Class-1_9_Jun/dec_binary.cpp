@@ -25,10 +25,10 @@ int convBinToDec(int n)
 int ans = 0, cnt=0, two_pow=1;
 while(n!=0)
 {
-    cnt = n&1;
+    cnt = n%10;
     ans += (cnt*two_pow);
     two_pow*= 2;
-    n >>= 1;
+    n /= 10;
 }
 return ans;
 }

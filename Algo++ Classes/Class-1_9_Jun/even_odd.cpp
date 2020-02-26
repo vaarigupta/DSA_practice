@@ -1,14 +1,14 @@
 #include<iostream>
 using namespace std;
-bool even_odd(int n)
+bool check_if_even(int n)
 {
-    if(n&1 == 0)
+    if(n&1)
     {
-        return true;
+        return false;
     }
     else
     {
-        return false;
+        return true;
     }
 }
 int main()
@@ -16,7 +16,7 @@ int main()
     int n;
     cout<<"Enter the number :"<<endl;
     cin>>n;
-    if(even_odd(n))
+    if(check_if_even(n))
     {
         cout<<n<<" is even"<<endl;
     }

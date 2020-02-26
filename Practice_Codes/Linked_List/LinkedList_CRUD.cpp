@@ -213,7 +213,7 @@ int main()
   cin>>d;
   if(searchIterative(head,d))
   {
-      cout<<"found"<<endl;
+      cout<<"found iteratively"<<endl;
   }
   else
   {
@@ -221,7 +221,7 @@ int main()
   }
   if(searchRecursive(head,d))
   {
-      cout<<"found"<<endl;
+      cout<<"found recursively"<<endl;
   }
   else
   {
@@ -232,7 +232,7 @@ int main()
     cout<<"Deletion at Head "<<endl<<head<<endl;
     deletionAtTail(head);
     cout<<"Deletion at tail "<<endl<<head<<endl;
-  cout<<"Enter position :"<<endl;
+  cout<<"Enter position to delete in the middle:"<<endl;
   cin>>p;
   deletionInMiddle(head,p);
   cout<<head<<endl;

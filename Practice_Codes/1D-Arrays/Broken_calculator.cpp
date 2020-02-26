@@ -28,7 +28,9 @@ int main()
 /*
 
 BROKEN CALCULATOR
-Andrew was attempting a mathematics test where he needed to solve problems with factorials. One such problem had an answer which equaled 100! ,He wondered what would this number look like. He tried to calculate 100! On his scientific calculator but failed to get a correct answer. Can you write a code to help Andrew calculate factorials of such large numbers?
+Andrew was attempting a mathematics test where he needed to solve problems with factorials. One such problem had an answer which equaled 100! ,
+He wondered what would this number look like. He tried to calculate 100! On his scientific calculator but failed to get a correct answer.
+Can you write a code to help Andrew calculate factorials of such large numbers?
 
 Input Format:
 a single lined integer N
