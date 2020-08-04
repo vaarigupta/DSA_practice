@@ -30,6 +30,8 @@ node* buildTree(node* root)
     root->right = buildTree(root->right);
     return root;
 }
+
+///DFS
 ///Pre Order Print
 void PreOrderPrint(node* root)
 {
@@ -64,6 +66,7 @@ void PostOrderPrint(node* root)
     PostOrderPrint(root->right);
     cout<<root->data<<" ";
 }
+///BFS
 void levelOrderPrint(node* root)
 {
     queue<node*> q;

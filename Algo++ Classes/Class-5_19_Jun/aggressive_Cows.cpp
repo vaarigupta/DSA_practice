@@ -9,8 +9,9 @@ bool canPlace(int *st, int n , int c, int sep)
         int current_stall = st[i];
         if(current_stall-last_cows >= sep)
         {
-            cows++;
+
             last_cows = current_stall;
+            cows++;
             if(cows==c)
             {
                 return true;
@@ -40,13 +41,14 @@ int aggressive_cows(int *st, int c,int n)
         }
 
     }
+    return ans;
 
 }
 
 int main()
 {
     int c=3;
-    int stalls[]= {1,2,4,8,9}; ///Sorted coordinates
+    int stalls[]= {1,2,8,4,9}; ///Sorted coordinates
     int n = sizeof(stalls)/sizeof(int);
     cout<<aggressive_cows(stalls,c,n);
     return 0;

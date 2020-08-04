@@ -1,7 +1,8 @@
 /*
 
 INTERSECTION POINT TWO LINKED LISTS
-There are two linked lists. Due to some programming error, the end node of one of the linked list got linked into the second list, forming an inverted Y shaped list. Now it's your job to find the point(Node) at which the two linked lists are intersecting.
+There are two linked lists. Due to some programming error, the end node of one of the linked list got linked into the second list,
+forming an inverted Y shaped list. Now it's your job to find the point(Node) at which the two linked lists are intersecting.
 
 Input Format:
 The first line of input is the size(N1) of the first linked list, followed by its content(Xi). The third line of input is the size(N2) of the second linked list, followed by its content( Yi ).
@@ -94,6 +95,7 @@ node* getLastNode(node*head)
     }
     return head;
 }
+/// my solution
 int intersectionPoint(node*head1 , node* head2)
 {
     node* tail1 = getLastNode(head1);
@@ -109,8 +111,8 @@ int intersectionPoint(node*head1 , node* head2)
     }
     return tail1->next->data;
 
-
 }
+/// sir solution
 int intersectionPoint1(node*head1 , node* head2, int n1, int n2)
 {
 

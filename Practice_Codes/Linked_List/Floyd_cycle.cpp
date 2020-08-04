@@ -95,7 +95,7 @@ bool cycleDetection(node *head)
 
 void cycleRemoval(node* head)
 {
-      node* fast = head;
+    node* fast = head;
     node* slow = head;
     while(fast!=NULL && fast->next!=NULL)
     {

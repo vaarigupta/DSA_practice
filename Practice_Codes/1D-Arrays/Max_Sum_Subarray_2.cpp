@@ -10,14 +10,7 @@ void maxSum(int a[], int n, int cs[])
     {
        for(int j=i;j<n;j++)
        {
-           if(i>=1)
-           {
-               currSum = cs[j] - cs[i-1];
-           }
-           else
-           {
-               currSum = cs[j];
-           }
+              currSum = cs[j] - cs[i-1];
            if(currSum> maxSum1)
            {
                maxSum1= currSum;

@@ -53,25 +53,20 @@ void spiralPrint(int a[][10], int r , int c)
     while(startrow<=endrow && startcol<=endcol)
     {
         ///start col fixed and  row changes  0 to endrow
-        if(startcol<=endcol)
-        {for(int i=startrow ; i<=endrow;i++)
+        for(int i=startrow ; i<=endrow;i++)
            {
                cout<<a[i][startcol]<<", ";
            }
-
-        }
-
             startcol++;
+
         ///end row fixed and col changes col+1 to endcol
-            if(startrow<=endrow)
-            {
                 for(int i=startcol;i<=endcol;i++)
             {
                 cout<<a[endrow][i]<<", ";
             }
-            }
-
             endrow--;
+
+
         /// end col fixed and row changes from endrow-1 to startrow
             if(startcol<=endcol)
             {
@@ -81,8 +76,8 @@ void spiralPrint(int a[][10], int r , int c)
                 }
 
             }
-
             endcol--;
+
         ///startrow fixed and col changes from endcol-1 to startcol
             if(startrow<=endrow)
             {
@@ -91,7 +86,6 @@ void spiralPrint(int a[][10], int r , int c)
                 cout<<a[startrow][i]<<", ";
             }
             }
-
             startrow++;
     }
     cout<<"END";
@@ -110,7 +104,7 @@ int main()
             cin>>a[i][j];
         }
     }
-    printArray(a,r,c);
+    //printArray(a,r,c);
     spiralPrint(a,r,c);
 
 
@@ -119,4 +113,30 @@ int main()
 
 
 
+/*
+5 3
+1 2 3
+4 5 6
+7 8 9
+10 11 12
+13 14 15
 
+Enter rows and cols :
+5 3
+Enter elements :
+1 2 3
+4 5 6
+7 8 9
+10 11 12
+13 14 15
+
+1, 4, 7, 10, 13, 14, 15, 12, 9, 6, 3, 2, 5, 8, 11, END
+
+Enter rows and cols :
+3 5
+Enter elements :
+1 2 3 4 5
+6 7 8 9 10
+11 12 13 14 15
+1, 6, 11, 12, 13, 14, 15, 10, 5, 4, 3, 2, 7, 8, 9, END
+*/
